@@ -9,7 +9,25 @@ angular.module('myApp.view1', ['ngRoute', 'ngMessages'])
         });
     }])
 
-    .controller('View1Ctrl', [function ($scope) {
+    .controller('View1Ctrl', ['$scope', function ($scope) {
+        $scope.user = {};
+        $scope.users = [];
+        $scope.states = [
+            {country: 'Romania', zip: '11111'},
+            {country: 'England', zip: '22222'},
+            {country: 'Hungary', zip: '33333'}
+        ];
+        initUser();
 
+        $scope.onSubmitForm = function () {
+            $scope.users.push($scope.user);
+            initUser();
+        }
+
+        function initUser() {
+            $scope.user = {};
+            $scope.user.state = $scope.states[0];
+            $scope.user.active = true;
+        }
 
     }]);
