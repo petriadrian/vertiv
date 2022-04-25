@@ -1,0 +1,85 @@
+<p> view 1 works</p>
+ksdlkkslkslkd
+    <form class="row" name="frm" method="post" ng-submit="onSubmitForm()">
+
+        <div class="col-6 p-1">
+            <label class="form-label">Email</label><br>
+            <input name="email" ng-model="user.email" type="email" placeholder="Email" class="form-control" required>
+            <div class="text-danger" ng-messages="frm.email.$error" role="alert">
+                <div ng-message="required">*Required</div>
+                <div ng-message="email">Must be a valid email</div>
+            </div>
+        </div>
+
+        <div class="col-6 p-1">
+            <label class="form-label">Password</label><br>
+            <input name="password" ng-model="user.password" type="password" placeholder="Password" class="form-control"
+                   required ng-minlength="8" ng-maxlength="15">
+            <div class="text-danger" ng-messages="frm.password.$error" role="alert">
+                <div ng-message="required">*Required</div>
+                <div ng-message="minlength">Password must have minimum 8 characters</div>
+                <div ng-message="maxlength">Password must have maximum 15 characters</div>
+            </div>
+        </div>
+
+        <div class="col-12 p-1">
+            <label class="form-label">Address</label><br>
+            <input class="form-control" name="address" ng-model="user.address" type="text" placeholder="1234 Main Str"
+                   required>
+            <div class="text-danger" ng-messages="frm.address.$error" role="alert">
+                <div ng-message="required">*Required</div>
+            </div>
+        </div>
+
+        <div class="col-6 p-1">
+            <label class="form-label">City</label><br>
+            <input class="form-control" name="city" ng-model="user.city" type="text" placeholder="City" required>
+            <div class="text-danger" ng-messages="frm.city.$error" role="alert">
+                <div ng-message="required">*Required</div>
+            </div>
+        </div>
+
+        <div class="col-3 p-1">
+            <label class="form-label">State</label><br>
+            <select class="form-control" name="state" ng-model="user.state"
+                    ng-options="state.country for state in states"></select>
+        </div>
+
+        <div class="col-3 p-1">
+            <label class="form-label">Zip</label><br>
+            <input class="form-control" disabled name="zip" ng-model="user.state.zip" type="text">
+        </div>
+
+        <div class="col-10 p-1">
+            <input name="active" ng-model="user.active" type="checkbox"> Active account
+        </div>
+
+        <div class="col-2 p-1">
+            <button type="submit" class="btn w-100 btn-primary" ng-disabled="frm.$invalid || !user.active"> Add>>
+            </button>
+        </div>
+
+    </form>
+
+    <table class="table table-hover mt-5">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Zip</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in users">
+<!--            <th scope="row">{{$index}}</th>-->
+<!--            <td>{{user.email}}</td>-->
+<!--            <td>{{user.address}}</td>-->
+<!--            <td>{{user.city}}</td>-->
+<!--            <td>{{user.state.country}}</td>-->
+<!--            <td>{{user.state.zip}}</td>-->
+        </tr>
+        </tbody>
+    </table>
